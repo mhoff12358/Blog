@@ -40,7 +40,7 @@ def getBlogpostsFromDir(dirOfPosts, template_name: str):
 
             blogpostList.append(blogpostDict)
 
-    blogpostList.sort(key=lambda postInList: postInList['date'],reverse=True)
+    blogpostList.sort(key=lambda postInList: (postInList['date'], postInList['perdayindex']),reverse=True)
 
     return blogpostList
 

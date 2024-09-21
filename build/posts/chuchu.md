@@ -1,4 +1,4 @@
-@title Chuchu and her buddy @date 2024-09-20
+@title Chuchu and her buddy @date 2024-09-20 @perdayindex 2
 
 
 ## Quite a while back I assembled and painted Chuchu's Demitrainer
