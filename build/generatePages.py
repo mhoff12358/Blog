@@ -81,7 +81,7 @@ def generateBlogPages(dirToWriteTo,blogpostList,templates: Templates,rootURL,fee
         fileHandler.write(siteHtml)
         fileHandler.close()
 
-def generateAtomFeed(blogposts,rootURL,title):
+def generateAtomFeed(blogpostList,rootURL,title):
     feedGen  = FeedGenerator()
     feedGen.title(title)
     feedGen.link(href=f"{rootURL}/atom.xml", rel='alternate')
@@ -125,7 +125,7 @@ READMORE_BOTTOM = """
 </details>
 """
 
-if __name__ == "__main__":
+def main():
     postDir = "posts"
     categoriesDir = "posts/categories"
     dirForPages = "../public_html/pages"
@@ -169,3 +169,6 @@ if __name__ == "__main__":
 #   index_html.write(parsedSiteHtml.prettify())
     index_html.write(siteHtml)
     index_html.close()
+
+if __name__ == "__main__":
+    main()
