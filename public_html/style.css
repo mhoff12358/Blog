@@ -66,7 +66,7 @@ article {
     padding: 0.5vw;
 }
 
-article h2 {
+h2.article-title {
     text-align: left;
     font-size: 1vw;
     margin: 0;
@@ -91,4 +91,16 @@ span.header_divider {
 
 article img {
     max-width: 100%;
+}
+
+img.halfimage {
+    max-width: 20%;
+    float: left;
+    position: relative;
+    margin-right: 5%;
+}
+
+div.image-container {
+    display: flex;
+    flex-wrap: wrap;
 }

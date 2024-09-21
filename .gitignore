@@ -7,6 +7,8 @@ public_html/*
 # Include pages folder
 !public_html/pages/
 
+# Include images folder, which should use lfs
+!public_html/images
+
 # Include CSS file
 !*style.css
-
