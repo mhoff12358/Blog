@@ -44,15 +44,18 @@ def getBlogpostsFromDir(dirOfPosts, template_name: str):
 
     return blogpostList
 
-def generateBlogpostObj(blogpostTemplateLocation,blogpost):
-    posts = []
-    content = {}
-
+def generateBlogpostObj(blogpostTemplateLocation,blogpost,include_readmore):
     fileHandler = open(blogpostTemplateLocation,"r")
     blogpostTemplate = fileHandler.read()
     fileHandler.close()
 
-    generatedBlogpost = chevron.render(blogpostTemplate,blogpost)
+    content = blogpost.copy()
+    if include_readmore:
+        content["readmore_bar"] = f"<a class=\"readmore\" href=\"/pages/{content["filename"]}\">read more</a>"
+    else:
+        content["readmore_bar"] = ""
+
+    generatedBlogpost = chevron.render(blogpostTemplate,content)
     blogpostObj = {"post":generatedBlogpost}
 
     return blogpostObj
@@ -61,12 +64,14 @@ def generateBlogPages(dirToWriteTo,blogpostList,templates: Templates,rootURL,fee
 
     for blogpostObj in blogpostList:
         templateToUse = templates.__getattribute__(blogpostObj["template_name"])
-        blogpost = generateBlogpostObj(templateToUse,blogpostObj)
+        blogpost = generateBlogpostObj(templateToUse,blogpostObj,include_readmore=False)
         siteContent = {
         "relativelink":"../",
         "rootURL":rootURL,
         "feedtitle":feedtitle,
-        "content":[blogpost]
+        "content":[blogpost],
+        "readmore_top":"",
+        "readmore_bottom":"",
         }
         siteHtml = generateSite(templates.site,siteContent)
 #       parsedSiteHtml = bs4.BeautifulSoup(siteHtml, 'html.parser')
@@ -109,6 +114,17 @@ def generateSite(siteTemplateLocation,content):
     return generatedSite
 
 
+READMORE_TOP = """
+<details>
+  <summary class="readmore">
+    Read more
+  </summary>
+"""
+
+READMORE_BOTTOM = """
+</details>
+"""
+
 if __name__ == "__main__":
     postDir = "posts"
     categoriesDir = "posts/categories"
@@ -139,10 +155,12 @@ if __name__ == "__main__":
     "relativelink":"",
     "rootURL":rootURL,
     "feedtitle":feedtitle,
-    "content":[]
+    "content":[],
+    "readmore_top":READMORE_TOP,
+    "readmore_bottom":READMORE_BOTTOM,
     }
     for post in blogpostList:
-        index_content["content"].append(generateBlogpostObj(templates.__getattribute__(post["template_name"]),post))
+        index_content["content"].append(generateBlogpostObj(templates.__getattribute__(post["template_name"]),post,include_readmore=True))
 
     siteHtml = generateSite(siteTemplate,index_content)
 #   parsedSiteHtml = bs4.BeautifulSoup(siteHtml, 'html.parser')
