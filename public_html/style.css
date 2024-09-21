@@ -104,3 +104,12 @@ div.image-container {
     display: flex;
     flex-wrap: wrap;
 }
+
+summary.readmore {
+    color: darkblue;
+    font-weight: bold;
+}
+
+details[open] summary.readmore {
+    display: none;
+}

@@ -8,7 +8,7 @@
 <img class="halfimage" src="{{relativelink}}images/chuchu/alone.jpg" alt="Chuchu's demitrainer">
 </div>
 
-<div>{{&readmore_top}}
+{{{readmore_top}}}
 
 I decided not to hit it with a topcoat 'cause I liked the matte look and only had glossy on me.
 
@@ -27,5 +27,4 @@ But then I saw the Chuchu model kit at a store and audibly gasped, and immediate
 <img class="halfimage" src="{{relativelink}}images/chuchu/faces.jpg" alt="Two Chuchu faces with waterslide decal eyes applied">
 </div>
 
-{{&readmore_bottom}}
-</div>
+{{{readmore_bottom}}}

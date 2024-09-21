@@ -115,7 +115,7 @@ def generateSite(siteTemplateLocation,content):
 
 
 READMORE_TOP = """
-<details>
+<details class="readmore">
   <summary class="readmore">
     Read more
   </summary>
