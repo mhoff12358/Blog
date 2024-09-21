@@ -5,20 +5,28 @@ import markdown
 import chevron
 #import bs4
 import blogpostParser
+from dataclasses import dataclass
 from feedgen.feed import FeedGenerator
 from feedgen.entry import FeedEntry
 import tomllib
+from typing import Dict, List
 
 TIMESTAMP_STRING: str = 'T12:00:00Z'
 
-def getBlogpostsFromDir(dirOfPosts):
+@dataclass
+class Templates:
+    post: str
+    category: str
+    site: str
+
+def getBlogpostsFromDir(dirOfPosts, template_name: str):
     blogParser = blogpostParser.blogpostParser()
     blogpostList = []
-
 
     for filename in os.listdir(dirOfPosts):
         if filename[-3:] == ".md":
             blogpostDict = {}
+            blogpostDict['template_name'] = template_name
             fileHandler = open(f"{dirOfPosts}/{filename}",'r',encoding='utf-8')
             lineToParse = fileHandler.readline()
             blogpostDict["body"] = markdown.markdown(fileHandler.read())
@@ -49,19 +57,18 @@ def generateBlogpostObj(blogpostTemplateLocation,blogpost):
 
     return blogpostObj
 
-def generateBlogPages(dirToWriteTo,blogpostList,templates,rootURL,feedtitle):
-    POST_TEMPLATE = templates[0]
-    SITE_TEMPLATE = templates[1]
+def generateBlogPages(dirToWriteTo,blogpostList,templates: Templates,rootURL,feedtitle):
 
     for blogpostObj in blogpostList:
-        blogpost = generateBlogpostObj(POST_TEMPLATE,blogpostObj)
+        templateToUse = templates.__getattribute__(blogpostObj["template_name"])
+        blogpost = generateBlogpostObj(templateToUse,blogpostObj)
         siteContent = {
         "relativelink":"../",
         "rootURL":rootURL,
         "feedtitle":feedtitle,
         "content":[blogpost]
         }
-        siteHtml = generateSite(SITE_TEMPLATE,siteContent)
+        siteHtml = generateSite(templates.site,siteContent)
 #       parsedSiteHtml = bs4.BeautifulSoup(siteHtml, 'html.parser')
 
         fileHandler = open(f"{dirToWriteTo}/{blogpostObj['filename']}","w")
@@ -69,7 +76,7 @@ def generateBlogPages(dirToWriteTo,blogpostList,templates,rootURL,feedtitle):
         fileHandler.write(siteHtml)
         fileHandler.close()
 
-def generateAtomFeed(blogpostList,rootURL,title):
+def generateAtomFeed(blogposts,rootURL,title):
     feedGen  = FeedGenerator()
     feedGen.title(title)
     feedGen.link(href=f"{rootURL}/atom.xml", rel='alternate')
@@ -90,6 +97,9 @@ def generateAtomFeed(blogpostList,rootURL,title):
 
 
 def generateSite(siteTemplateLocation,content):
+    for i in range(0, len(content["content"])):
+        content["content"][i]["post"] = chevron.render(content["content"][i]["post"], content)
+
     fileHandler = open(siteTemplateLocation,"r")
     siteTemplate = fileHandler.read()
     fileHandler.close()
@@ -98,16 +108,19 @@ def generateSite(siteTemplateLocation,content):
 
     return generatedSite
 
+
 if __name__ == "__main__":
     postDir = "posts"
+    categoriesDir = "posts/categories"
     dirForPages = "../public_html/pages"
     dirForFeed = "../public_html"
     postTemplate = "templates/blogpost.mustache"
+    categoryTemplate = "templates/category.mustache"
     siteTemplate = "templates/site.mustache"
 
-    templates = [postTemplate,siteTemplate]
+    templates = Templates(post=postTemplate, category=categoryTemplate, site=siteTemplate)
 
-    postList = getBlogpostsFromDir(postDir)
+    blogpostList = getBlogpostsFromDir(postDir, "post") + getBlogpostsFromDir(categoriesDir, "category")
 
     with open("config.toml","rb") as file:
         config = tomllib.load(file)
@@ -116,11 +129,11 @@ if __name__ == "__main__":
     feedtitle = config.get("title","My Cool Blog")
     feedIncluded = False
     if len(rootURL) > 0:
-        feed = generateAtomFeed(postList,rootURL,feedtitle)
+        feed = generateAtomFeed(blogpostList,rootURL,feedtitle)
         feedIncluded = True
         feed.atom_file(f'{dirForFeed}/atom.xml')
 
-    generateBlogPages(dirForPages,postList,templates,rootURL,feedtitle)
+    generateBlogPages(dirForPages,blogpostList,templates,rootURL,feedtitle)
 
     index_content = {
     "relativelink":"",
@@ -128,8 +141,8 @@ if __name__ == "__main__":
     "feedtitle":feedtitle,
     "content":[]
     }
-    for post in postList:
-        index_content["content"].append(generateBlogpostObj(postTemplate,post))
+    for post in blogpostList:
+        index_content["content"].append(generateBlogpostObj(templates.__getattribute__(post["template_name"]),post))
 
     siteHtml = generateSite(siteTemplate,index_content)
 #   parsedSiteHtml = bs4.BeautifulSoup(siteHtml, 'html.parser')
