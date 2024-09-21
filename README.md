@@ -1,26 +1,19 @@
-# Slimelia's Blog Generator (SLIMEBLOGGER)
-Static blog generator with Atom feed, as used on my [tilde.town page](https://tilde.town/~slimelia).
+# My fork of SLIMEBLOGGER with my content in it
 
-Takes Markdown posts, spits out HTML. Easy peasy lemon squeezy!
+SLIMEBLOGGER made by slimelia (https://github.com/slimelia/slimeblogger)
 
+## Build
 
-## How To Use
-
-Please see the [wiki](https://github.com/slimelia/slimeblogger/wiki) for assistance on using this blog generator.
+cd build
+python generatePages.py
 
 ## Markdown formatting
 
 Web blog content is generated from Markdown blog post documents.
 All blog posts must contain a header on the first line:
 
-`@title Title Goes Here @author author_name_here @date yyyy-mm-dd`
+`@title Title Goes Here @date yyyy-mm-dd @perdayindex 4`
 
-## Required packages
+Posts are sorted by date, then by perdayindex (increasing)
 
-Copied from `build/requirements.txt`:
-```
-chevron==0.14.0
-feedgen==1.0.0
-Markdown==3.7
-```
-Open the `build` directory in your terminal and run `pip install -r requirements.txt` to install.
+Open the `build` directory in your terminal and run `pip install -r requirements.txt` to install requirements. Needs python >=3.11
