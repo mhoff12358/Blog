@@ -2,13 +2,13 @@
 *__pycache__/
 
 # HTML files
-public_html/*
-
-# Include pages folder
-!public_html/pages/
+public_html/
 
 # Include images folder, which should use lfs
 !public_html/images
 
 # Include CSS file
 !*style.css
+
+# Don't upload my private key...
+build/neocities_key.py

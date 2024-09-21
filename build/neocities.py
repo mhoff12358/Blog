@@ -1,3 +1,5 @@
+# From https://98.neocities.org/neocities-py/
+
 import requests
 
 __version__ = '1.1.0'

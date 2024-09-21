@@ -1,12 +1,19 @@
 @charset "UTF-8";
 
+:root {
+    --background_gray: #252426;
+    --main_blue: #36388A;
+    --lighter_main_blue: #007584;
+}
+
 body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    background-color: gainsboro;
+    background-color: var(--background_gray);
     color: black;
 }
 
 header {
+    color: var(--main_blue);
     text-align: center;
 }
 
@@ -57,7 +64,7 @@ h1.pageHeader {
 
 article {
     border-left-style: solid;
-    border-color: dodgerblue;
+    border-color: var(--main_blue);
     background-color: lavender;
     border-width: 0.5vw;
     margin-left: 20vw;
@@ -68,8 +75,16 @@ article {
 
 h2.article-title {
     text-align: left;
-    font-size: 1vw;
+    font-size: 1.5vw;
     margin: 0;
+}
+
+h2.article-title a {
+    color: var(--main_blue);
+}
+
+h2.article-title a:hover {
+    color: var(--lighter_main_blue);
 }
 
 
@@ -82,7 +97,7 @@ article p.subheader {
 
 span.header_divider {
     display: inline-block;
-    background-color: gray;
+    background-color: var(--background_gray);
     width: 100%;
     height: 0.2vw;
     margin-top: 0.3vw;
@@ -106,7 +121,7 @@ div.image-container {
 }
 
 summary.readmore {
-    color: darkblue;
+    color: var(--main_blue);
     font-weight: bold;
 }
 

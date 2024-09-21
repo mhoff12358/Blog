@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import shutil
 import os
 import markdown
 import chevron
@@ -170,5 +171,20 @@ def main():
     index_html.write(siteHtml)
     index_html.close()
 
+def precleanup():
+    shutil.rmtree("../public_html/pages", ignore_errors=True)
+    os.mkdir("../public_html/pages")
+    try:
+        os.remove("../public_html/index.html")
+    except FileNotFoundError:
+        pass
+    try:
+        os.remove("../public_html/atom.xml")
+    except FileNotFoundError:
+        pass
+    
+
 if __name__ == "__main__":
+    precleanup()
+
     main()
