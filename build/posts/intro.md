@@ -17,5 +17,6 @@ Grouping some projects by category, I've been working on:
   - AI: Somnium Files models
   - [Gunpla]({{relativelink}}pages/gunpla.html)
   - Soul Hackers 2 electronics
+  - [Gamedev]({{relativelink}}pages/gamedev.html)
 
 Static content generated using [slimeblogger](https://github.com/slimelia/slimeblogger).
