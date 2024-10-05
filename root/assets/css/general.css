@@ -1,8 +1,13 @@
-:root {
-    --header-image: url('https://sadhost.neocities.org/images/layouts/wp.jpeg');
+@import url("/assets/css/images.css");
 
-    /* colors */
+:root {
     --content: #43256E;
+    --center-background: ;
+    --navigation-background: ;
+    --highlight-text: #ED64F5;
+    --link-text: #ED64F5;
+    --link-hover-text: #A49CBA;
+    --divider: #A49CBA;
 }
 
 /* fonts */
@@ -41,13 +46,6 @@ body {
     box-sizing: border-box;
 }
 
-/* below this line is CSS for the layout */
-
-/* this is a CSS comment
-to uncomment a line of CSS, remove the * and the /
-before and after the text */
-
-
 /* the "container" is what wraps your entire website */
 /* if you want something (like the header) to be Wider than
 the other elements, you will need to move that div outside
@@ -64,7 +62,7 @@ and change the media query according to the comment! */
 /* the area below is for all links on your page
 EXCEPT for the navigation */
 #container a {
-    color: #ED64F5;
+    color: var(--link-text);
     font-weight: bold;
     /* if you want to remove the underline
 you can add a line below here that says:
@@ -76,11 +74,10 @@ text-decoration:none; */
     background-color: #5e4e8c;
     /* header color here! */
     height: 150px;
-    /* this is only for a background image! */
-    /* if you want to put images IN the header, 
-you can add them directly to the <div id="header"></div> element! */
-    background-image: var(--header-image);
-    background-size: 100%;
+}
+
+#header h1 {
+    color: var();
 }
 
 /* navigation section!! */
@@ -105,7 +102,7 @@ you can add them directly to the <div id="header"></div> element! */
 
 /* navigation links*/
 #navbar li a {
-    color: #ED64F5;
+    color: var(--link-text);
     /* navbar text color */
     font-weight: 800;
     text-decoration: none;
@@ -114,7 +111,7 @@ you can add them directly to the <div id="header"></div> element! */
 
 /* navigation link when a link is hovered over */
 #navbar li a:hover {
-    color: #a49cba;
+    color: var(--link-hover-text);
     text-decoration: underline;
 }
 
@@ -122,21 +119,17 @@ you can add them directly to the <div id="header"></div> element! */
     display: flex;
 }
 
-/* this colors BOTH sidebars
-if you want to style them separately,
-create styles for #leftSidebar and #rightSidebar */
-aside {
+#leftSidebar {
     background-color: #241445;
     width: 200px;
     padding: 20px;
     font-size: smaller;
-    /* this makes the sidebar text slightly smaller */
 }
 
 
 /* this is the color of the main content area,
 between the sidebars! */
-main {
+#center {
     background-color: #43256E;
     flex: 1;
     padding: 20px;
@@ -149,15 +142,7 @@ if you're using both sidebars, the "order" value
 tells the CSS the order in which to display them.
 left sidebar is 1, content is 2, and right sidebar is 3! */
 
-*/ #leftSidebar {
-    order: 1;
-}
-
-#rightSidebar {
-    order: 3;
-}
-
-footer {
+#footer {
     background-color: #13092D;
     /* background color for footer */
     width: 100%;
@@ -170,7 +155,7 @@ footer {
 h1,
 h2,
 h3 {
-    color: #ED64F5;
+    color: var(--highlight-text);
 }
 
 h1 {
@@ -178,18 +163,14 @@ h1 {
 }
 
 strong {
-    /* this styles bold text */
-    color: #ED64F5;
+    color: var(--highlight-text);
 }
 
-/* this is just a cool box, it's the darker colored one */
 .box {
     background-color: #13092D;
     border: 1px solid #ED64F5;
     padding: 10px;
 }
-
-/* CSS for extras */
 
 #topBar {
     width: 100%;
@@ -199,38 +180,31 @@ strong {
     background-color: #13092D;
 }
 
-/* BELOW THIS POINT IS MEDIA QUERY */
+@media only screen and (orientation: landscape) {
+    #leftSidebar {
+        #expander {
+            display: none;
+        }
+    }
+}
 
-/* so you wanna change the width of your page? 
-by default, the container width is 900px.
-in order to keep things responsive, take your new height,
-and then subtrack it by 100. use this new number as the 
-"max-width" value below
-*/
-
-@media only screen and (max-width: 800px) {
+@media only screen and (orientation: portrait) {
     #flex {
         flex-wrap: wrap;
     }
 
-    aside {
-        width: 100%;
-    }
-
-    /* the order of the items is adjusted here for responsiveness!
-since the sidebars would be too small on a mobile device.
-feel free to play around with the order!
-*/
-    main {
-        order: 1;
-    }
-
     #leftSidebar {
-        order: 2;
-    }
+        width: 100%;
 
-    #rightSidebar {
-        order: 3;
+        & #expanded {
+            display: none;
+
+        }
+
+        & #expanded.active {
+            display: block;
+        }
+
     }
 
     #navbar ul {
@@ -240,9 +214,9 @@ feel free to play around with the order!
 
 span.header_divider {
     display: inline-block;
-    background-color: #999999;
+    background-color: var(--divider);
     width: 100%;
-    height: 0.2vw;
-    margin-top: 0.3vw;
-    margin-bottom: 0.3vw;
+    height: 0.5em;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
 }
