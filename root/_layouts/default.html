@@ -8,9 +8,22 @@
 </head>
 
 <body>
-    {% include temp_nav.html %}
+    {% capture layout_content %}
+    {% for post in site.posts %}
+    <div class="post postPreview">
+        <a href="{{ post.url }}">
+            <h1 class="sectionTitle">{{ post.title }}</h1>
+        </a>
 
-    {{ content }}
+        <span class="header_divider" />
+
+        {{ post.excerpt }}
+    </div>
+    {% endfor %}
+
+    {% endcapture %}
+
+    {% include common_layout.html %}
 </body>
 
 </html>

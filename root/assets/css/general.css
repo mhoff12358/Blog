@@ -8,6 +8,11 @@
     --link-text: #ED64F5;
     --link-hover-text: #A49CBA;
     --divider: #A49CBA;
+    --post-background: #43065b;
+    --nonpost-background: #53276d;
+    --header-text: var(--highlight-text);
+    --header-background-color: #5e4e8c;
+    --page-background-color: #08031A;
 }
 
 /* fonts */
@@ -38,7 +43,7 @@
 body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
-    background-color: #08031A;
+    background-color: var(--page-background-color);
     color: #fceaff;
 }
 
@@ -47,16 +52,9 @@ body {
 }
 
 /* the "container" is what wraps your entire website */
-/* if you want something (like the header) to be Wider than
-the other elements, you will need to move that div outside
-of the container */
 #container {
     max-width: 900px;
-    /* this is the width of your layout! */
-    /* if you change the above value, scroll to the bottom
-and change the media query according to the comment! */
     margin: 0 auto;
-    /* this centers the entire page */
 }
 
 /* the area below is for all links on your page
@@ -64,23 +62,24 @@ EXCEPT for the navigation */
 #container a {
     color: var(--link-text);
     font-weight: bold;
-    /* if you want to remove the underline
-you can add a line below here that says:
-text-decoration:none; */
+    /* text-decoration:none; */
 }
 
 #header {
     width: 100%;
-    background-color: #5e4e8c;
-    /* header color here! */
+    background-color: var(--header-background-color);
     height: 150px;
 }
 
 #header h1 {
-    color: var();
+    color: var(--header-text);
 }
 
-/* navigation section!! */
+h1.sectionTitle {
+    margin-top: 0;
+    padding-top: 0.5em;
+}
+
 #navbar {
     height: 40px;
     background-color: #13092D;
@@ -122,18 +121,33 @@ text-decoration:none; */
 #leftSidebar {
     background-color: #241445;
     width: 200px;
-    padding: 20px;
     font-size: smaller;
+    padding: 1em;
 }
 
 
 /* this is the color of the main content area,
 between the sidebars! */
 #center {
-    background-color: #43256E;
+    background-color: var(--nonpost-background);
     flex: 1;
-    padding: 20px;
     order: 2;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 2em;
+}
+
+.post {
+    background-color: var(--post-background);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+.postPreview {}
+
+.wholePost {
+    width: 100%;
+    height: 100%;
 }
 
 /* what's this "order" stuff about??
@@ -144,12 +158,10 @@ left sidebar is 1, content is 2, and right sidebar is 3! */
 
 #footer {
     background-color: #13092D;
-    /* background color for footer */
     width: 100%;
-    height: 40px;
+    height: 3em;
     padding: 10px;
-    text-align: center;
-    /* this centers the footer text */
+    margin-top: 10px;
 }
 
 h1,

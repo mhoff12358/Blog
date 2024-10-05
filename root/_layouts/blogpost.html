@@ -9,9 +9,12 @@
 
 <body>
     {% capture layout_content %}
-    {{ page.title }}
-    <span class="header_divider" />
-    {{ content }}
+    <div class="post" class="wholePost">
+        <h1 class="sectionTitle">{{ page.title }}</h1>
+        <span class="header_divider" />
+        {{ content }}
+
+    </div>
     {% endcapture %}
 
     {% include common_layout.html %}
