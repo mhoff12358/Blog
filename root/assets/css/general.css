@@ -13,6 +13,7 @@
     --header-text: var(--highlight-text);
     --header-background-color: #5e4e8c;
     --page-background-color: #08031A;
+    --gutter-size: 1em;
 }
 
 /* fonts */
@@ -53,7 +54,6 @@ body {
 
 /* the "container" is what wraps your entire website */
 #container {
-    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -73,6 +73,10 @@ EXCEPT for the navigation */
 
 #header h1 {
     color: var(--header-text);
+}
+
+#headerArea {
+    margin-bottom: var(--gutter-size);
 }
 
 h1.sectionTitle {
@@ -139,7 +143,7 @@ between the sidebars! */
 
 .post {
     background-color: var(--post-background);
-    padding-bottom: 1em;
+    padding: 1em;
     margin-bottom: 1em;
 }
 
@@ -193,14 +197,24 @@ strong {
 }
 
 @media only screen and (orientation: landscape) {
+    #container {
+        max-width: 80vw;
+    }
+
     #leftSidebar {
         #expander {
             display: none;
         }
+
+        margin-right: var(--gutter-size);
     }
 }
 
 @media only screen and (orientation: portrait) {
+    #container {
+        max-width: 80vw;
+    }
+
     #flex {
         flex-wrap: wrap;
     }
