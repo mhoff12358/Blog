@@ -49,7 +49,7 @@ I had been looking into rust GUI libraries anyways (I'm doing all of this in rus
 ## Bam!
 
 <div class="image-container">
-<img class="wideimage" src="{{relativelink}}images/level_gen/rooms_without_doors_gui.png" alt="eframe GUI with a bunch of colorful rectangles">
+<img class="wideimage" src="/assets/images/level_gen/rooms_without_doors_gui.png" alt="eframe GUI with a bunch of colorful rectangles">
 </div>
 
 On the left is the grid broken up into chunks with a BSP.
@@ -66,13 +66,13 @@ Then connecting all rooms that share a boundary with a door, and all chunks that
 This guarantees all rooms are connected.
 
 <div class="image-container">
-<img class="wideimage" src="{{relativelink}}images/level_gen/rooms_with_doors_gui.jpg" alt="eframe GUI with a bunch of colorful rectangles and white lines representing doors">
+<img class="wideimage" src="/assets/images/level_gen/rooms_with_doors_gui.jpg" alt="eframe GUI with a bunch of colorful rectangles and white lines representing doors">
 </div>
 
 ## In game display!
 
 <div class="image-container">
-<img class="wideimage" src="{{relativelink}}images/level_gen/generated_rooms_with_doors.jpg" alt="3D game with a bunch of rooms with floors and walls and doors">
+<img class="wideimage" src="/assets/images/level_gen/generated_rooms_with_doors.jpg" alt="3D game with a bunch of rooms with floors and walls and doors">
 </div>
 
 And here it is in game! (Assets are from <a href="https://kaylousberg.itch.io/kaykit-dungeon-remastered">this pretty awesome asset pack</a>)

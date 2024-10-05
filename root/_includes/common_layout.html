@@ -1,12 +1,11 @@
 <div id="container">
-    {% render 'header.html' %}
-
+    {% include header.html %}
 
     <div id="flex">
-        {% render 'left_sidebar.html' %}
-        {% render 'center.html' %}
+        {% include left_sidebar.html %}
+        {% include center.html %}
 
     </div>
 
-    {% render 'footer.html' %}
+    {% include footer.html %}
 </div>

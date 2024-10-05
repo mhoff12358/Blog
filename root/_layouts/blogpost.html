@@ -4,15 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
+    {% include common_css.html %}
 </head>
 
 <body>
-    {% include temp_nav.html %}
-
-    {% comment %}
-    {% render 'common_layout.html' %}
-    {% endcomment %}
+    {% capture layout_content %}
+    {{ page.title }}
+    <span class="header_divider" />
     {{ content }}
+    {% endcapture %}
+
+    {% include common_layout.html %}
 </body>
 
 </html>
