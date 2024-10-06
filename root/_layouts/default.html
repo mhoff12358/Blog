@@ -1,21 +1,5 @@
-<!doctype html>
-<html>
+{% capture layout_content %}
+{{ content }}
+{% endcapture %}
 
-<head>
-    <meta charset="utf-8">
-    <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml">
-    <title>{{ page.title }}</title>
-    {% include common_head.html %}
-</head>
-
-<body>
-    {% capture layout_content %}
-    <div class="post" class="wholePost">
-        {{ content }}
-    </div>
-    {% endcapture %}
-
-    {% include common_layout.html %}
-</body>
-
-</html>
+{% include whole_page.html %}

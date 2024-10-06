@@ -1,23 +1,10 @@
-<!doctype html>
-<html>
+{% capture layout_content %}
+<div class="post" class="wholePost">
+    <h1 class="sectionTitle">{{ page.title }}</h1>
+    <span class="header_divider" />
+    {{ content }}
 
-<head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    {% include common_head.html %}
-</head>
+</div>
+{% endcapture %}
 
-<body>
-    {% capture layout_content %}
-    <div class="post" class="wholePost">
-        <h1 class="sectionTitle">{{ page.title }}</h1>
-        <span class="header_divider" />
-        {{ content }}
-
-    </div>
-    {% endcapture %}
-
-    {% include common_layout.html %}
-</body>
-
-</html>
+{% include whole_page.html %}

@@ -1,29 +1,16 @@
-<!doctype html>
-<html>
+{% capture layout_content %}
+{% for post in site.posts %}
+<div class="post postPreview">
+    <a href="{{ post.url }}">
+        <h1 class="sectionTitle">{{ post.title }}</h1>
+    </a>
 
-<head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    {% include common_head.html %}
-</head>
+    <span class="header_divider" />
 
-<body>
-    {% capture layout_content %}
-    {% for post in site.posts %}
-    <div class="post postPreview">
-        <a href="{{ post.url }}">
-            <h1 class="sectionTitle">{{ post.title }}</h1>
-        </a>
+    {{ post.excerpt }}
+</div>
+{% endfor %}
 
-        <span class="header_divider" />
+{% endcapture %}
 
-        {{ post.excerpt }}
-    </div>
-    {% endfor %}
-
-    {% endcapture %}
-
-    {% include common_layout.html %}
-</body>
-
-</html>
+{% include whole_page.html %}
