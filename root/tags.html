@@ -6,5 +6,7 @@ title: Tags
 <h1>Tags</h1>
 
 {% for tag in site.tags %}
-<h3><a href="/tags/{{tag[0] | lower}}.html">{{ tag[0] }}</a></h3>
+
+<h3><a href="/tags/{{tag[0] | lower}}.html">{{ tag[0] | capitalize }}</a></h3>
+
 {% endfor %}

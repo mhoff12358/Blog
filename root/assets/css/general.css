@@ -10,6 +10,7 @@
     --nonpost-background: #560E17;
     --header-text: #E5A580;
     --header-background-color: #560E17;
+    --header-lower-area-color: #3F0A11;
     --footer-color: #30080A;
     --page-background-color: #C47E64;
     --gutter-size: 1em;
@@ -87,6 +88,14 @@ EXCEPT for the navigation */
 
 #headerArea {
     margin-bottom: var(--gutter-size);
+    background-color: var(--header-lower-area-color);
+}
+
+#headerArea #headerAreaContents {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    height: 1.5em;
 }
 
 h1.sectionTitle {

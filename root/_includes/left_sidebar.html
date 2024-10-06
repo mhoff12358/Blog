@@ -7,7 +7,20 @@
             <h2>Home</h2>
         </a>
 
-        <h2>Posts</h2>
+        <a href="/tags.html">
+            <h2>Tags</h2>
+        </a>
+        <ul>
+            {% for tag in site.tags %}
+            <li>
+                <a href="/tags/{{tag[0]}}.html">{{ tag[0] | capitalize }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/index.html">
+            <h2>Posts</h2>
+        </a>
         <ul>
             {% for post in site.posts %}
             <li>

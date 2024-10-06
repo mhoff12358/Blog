@@ -1,5 +1,8 @@
 {% capture layout_content %}
-<h1>Posts</h1>
+
+<h1 class="sectionTitle">{{ page.tag_name | capitalize }}</h1>
+
+<h2>Posts</h2>
 
 <ul>
     {% for tag in site.tags %}
