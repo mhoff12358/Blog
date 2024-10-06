@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    {% include common_head.html %}
+</head>
+
+<body>
+    {% capture layout_content %}
+    <h1>Posts</h1>
+
+    <ul>
+        {% for tag in site.tags %}
+        {% if tag[0] == page.tag_name %}
+        {% for post in tag[1] %}
+
+        <li>
+            <a href="{{ post.url }}">{{post.title}}</a>
+        </li>
+
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endcapture %}
+
+    {% include common_layout.html %}
+</body>
+
+</html>
