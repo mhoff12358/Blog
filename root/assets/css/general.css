@@ -10,6 +10,7 @@
     --nonpost-background: #560E17;
     --header-text: #E5A580;
     --header-background-color: #560E17;
+    --footer-color: #30080A;
     --page-background-color: #C47E64;
     --gutter-size: 1em;
 }
@@ -67,6 +68,8 @@ EXCEPT for the navigation */
     width: 100%;
     background-color: var(--header-background-color);
     height: 10vmin;
+    display: flex;
+    align-items: center;
 }
 
 #header img {
@@ -170,7 +173,7 @@ tells the CSS the order in which to display them.
 left sidebar is 1, content is 2, and right sidebar is 3! */
 
 #footer {
-    background-color: #13092D;
+    background-color: var(--footer-color);
     width: 100%;
     height: 3em;
     padding: 10px;
