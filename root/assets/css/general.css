@@ -8,6 +8,7 @@
     --post-background: #3F0A11;
     --sidebar-background: #3F0A11;
     --nonpost-background: #560E17;
+    --comments-background: #E6D09E;
     --header-text: #E5A580;
     --header-background-color: #560E17;
     --header-lower-area-color: #3F0A11;
@@ -191,8 +192,9 @@ left sidebar is 1, content is 2, and right sidebar is 3! */
 
 .comment_section {
     overflow: hidden;
-    background-color: white;
-    color: black
+    background-color: var(--comments-background);
+    color: black;
+    padding: 10px;
 }
 
 .comment_section h1,
@@ -200,6 +202,23 @@ left sidebar is 1, content is 2, and right sidebar is 3! */
 .comment_section h3,
 .comment_section p {
     color: black
+}
+
+#HCB_comment_form_box {
+    padding-bottom: 0px !important;
+}
+
+#HCB_comment_box h3 {
+    margin-block-start: 0.25em;
+}
+
+#hcb_msg {
+    margin-top: 0.125em;
+    margin-bottom: 0.125em;
+}
+
+.comment {
+    margin-bottom: 1.125em !important;
 }
 
 h1,
