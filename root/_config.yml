@@ -1,9 +1,11 @@
 collections:
   tag:
     blogmaking
+    food
     gamedev
     gunpla
     meta
+    personal
 
 
 excerpt_separator: <!--more-->
