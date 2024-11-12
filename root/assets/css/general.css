@@ -189,6 +189,19 @@ left sidebar is 1, content is 2, and right sidebar is 3! */
     margin-top: 10px;
 }
 
+.comment_section {
+    overflow: hidden;
+    background-color: white;
+    color: black
+}
+
+.comment_section h1,
+.comment_section h2,
+.comment_section h3,
+.comment_section p {
+    color: black
+}
+
 h1,
 h2,
 h3 {

@@ -2,7 +2,12 @@
 <div class="post" class="wholePost">
     <h1 class="sectionTitle">{{ page.title }}</h1>
     <span class="header_divider" />
+
     {{ content }}
+
+    <span class="header_divider" />
+
+    {% include comments.html %}
 
 </div>
 {% endcapture %}
