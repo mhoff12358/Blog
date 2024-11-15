@@ -1,4 +1,0 @@
-chevron==0.14.0
-feedgen==1.0.0
-Markdown==3.7
-requests
