@@ -10,4 +10,26 @@
 </div>
 {% endcapture %}
 
+{% capture header_metadata %}
+{% assign title = page.title %}
+{% if page.description != None %}
+{% assign description = page.description %}
+{% else %}
+{% assign description = page.title %}
+{% endif %}
+
+<meta property="og:title" content="{{ title }}">
+<meta name="twitter:title" content="{{ title }}">
+<title>{{ title }}</title>
+
+<meta name="description" content="{{ description }}">
+<meta property="og:description" content="{{ description }}">
+<meta name="twitter:description" content="{{ description }}">
+
+{% if page.image != None %}
+<meta property="og:image" content="{{ page.image }}">
+<meta name="twitter:image" content="{{ page.image }}">
+{% endif %}
+{% endcapture %}
+
 {% include whole_page.html %}
