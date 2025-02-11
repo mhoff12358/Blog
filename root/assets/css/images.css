@@ -1,18 +1,52 @@
-img.halfimage {
-    max-width: 40%;
+img.thirdimage {
+    max-width: 20%;
     float: left;
     position: relative;
-    margin-right: 5%;
+    margin-right: 2%;
+    padding-right: 0;
+}
+
+div.halfimage-element {
+    max-width: 30%;
+    align-content: flex-start;
+    margin-right: 2%;
+    padding-right: 0;
+}
+
+img.halfimage {
+    max-width: 30%;
+    float: left;
+    position: relative;
+    margin-right: 2%;
+    padding-right: 0;
+}
+
+div.flexyimage-element {
+    float: left;
+    max-width: 50%;
+    max-height: 100%;
+}
+
+img.ar43 {
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 12 / 3;
+}
+
+img.ar34 {
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 3 / 4;
 }
 
 img.fullimage {
-    max-width: 85%;
+    max-width: 60%;
     float: left;
     position: relative;
     margin-right: 5%;
 }
 
 div.image-container {
-    display: flex;
+    display: inline-block;
     flex-wrap: wrap;
 }

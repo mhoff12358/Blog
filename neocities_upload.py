@@ -2,6 +2,7 @@ import os
 import subprocess
 from neocities import NeoCities
 from neocities_key import key
+from remove_metadata import remove_image_metadata
 
 def main():
     subprocess.run("jekyll build --source root", shell=True)
