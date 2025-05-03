@@ -40,13 +40,14 @@ img.ar34 {
 }
 
 img.fullimage {
-    max-width: 60%;
+    max-width: 62%;
     float: left;
     position: relative;
     margin-right: 5%;
 }
 
 div.image-container {
-    display: inline-block;
+    display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
